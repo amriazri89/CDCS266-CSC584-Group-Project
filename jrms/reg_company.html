@@ -8,7 +8,7 @@
     <style>
         /* Additional styles for the registration page */
         .registration-container {
-            max-width: 600px;
+            width: 700px;
             margin: 50px auto; /* Center the form vertically */
             padding: 30px;
             background-color: #f4f4f4;
@@ -35,31 +35,37 @@
         .form-group button {
             width: 100%;
             padding: 10px;
-            background-color: #333;
-            color: #fff;
+            background-color: #4C779F;
+            color: #f6f8fe;
             border: none;
             border-radius: 3px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
         .form-group button:hover {
-            background-color: #555;
+            background-color: #244C85;
+        }
+        body {
+            background-image: url('image/pexels-njeromin-11542516.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+            background-size: cover;
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="container">
-            <h1>Job Recruitment System</h1>
+            <img src="image/job.png" alt="Background Image" style="margin-left:-150px;width:100px;height:68px;">
+
+            <h1 style="margin-left:-580px;;">Job Recruitment <span style="color:blue;font-size:12px;">by vintech</span> </h1>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="jobs.html">Jobs</a></li>
-                <li><a href="candidates.html">Candidates</a></li>
+                <li><a href="login.html">Login/Signup</a></li>
                 <li><a href="aboutus.html">About Us</a></li>
-                <li><a href="hiring.html">Hiring Now?</a></li>
             </ul>
         </div>
     </nav>
+    <br><br><br>
     <div class="registration-container">
         <h2>Registration Form: Company Details</h2>
  
@@ -93,5 +99,10 @@
             </div>
         </form>
     </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Job Recruitment System. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
