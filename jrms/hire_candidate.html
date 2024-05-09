@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Candidates</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Additional styles */
+        body {
+            position: relative;
+            /* Set position to relative to position the pseudo-element */
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('image/pexels-tima-miroshnichenko-5439137.jpg');
+            /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+            background-size: cover;
+            opacity: 0.9;
+            /* Adjust the opacity value as needed */
+        }
+
+
+        .container,
+        footer {
+            position: relative;
+            /* Ensure container's children are positioned relative to it */
+            z-index: 1;
+            /* Move the container above the pseudo-element */
+        }
+
+        #candidate-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .candidate {
+            width: calc(33.33% - 20px);
+            background-color: #fff;
+            padding: 30px;
+            font-size: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 255, 0.1);
+            border: 1px solid rgb(122, 122, 126);
+
+        }
+        .candidate:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.3); /* Adjust the alpha value as needed */
+}
+
+        .candidate h3 {
+            margin-bottom: 10px;
+        }
+
+        .candidate p {
+            margin-bottom: 5px;
+        }
+
+        .candidate button {
+            background-color: #4C779F;
+            color: #fff;
+            border: none;
+            font-size: 18px;
+            padding: 8px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .candidate button:hover {
+            background-color: #244C85;
+        }
+
+        h2 {
+            color: rgb(0, 0, 0);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <img src="image/job.png" alt="Background Image" style="margin-left:-200px;width:100px;height:68px;">
+
+            <h1 style="margin-left:-400px;;">Job Recruitment <span style="color:blue;font-size:12px;">by vintech</span> </h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="hire_candidate.html">Job Application</a></li>
+                <li><a href="listofjobvacancy.html">Job Vacancies</a></li>
+                <li><a href="company_profile.html">Company Profile</a></li>
+     
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+    <br> <br> <br> <br> <br> <br>
+
+    <div class="container">
+
+
+        <h2>List of Candidates</h2><br>
+        <div id="candidate-list">
+            <!-- Candidate information will be dynamically populated here -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Job Recruitment System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add any scripts for fetching and displaying candidate data -->
+    <script>
+        // Example JavaScript for fetching candidate data and populating the page
+        window.onload = function () {
+            // Dummy data (replace with actual data fetching logic)
+            var candidates = [
+                { name: "Muhamad Amri Bin Azri", email: "john@example.com", position: "Software Developer" },
+                { name: "Paan Bin Upin", email: "jane@example.com", position: "Data Analyst" },
+                { name: "Ikhwan Bin Akhwan", email: "michael@example.com", position: "Marketing Specialist" }
+                // Add more candidate objects as needed
+            ];
+
+            var candidateListContainer = document.getElementById("candidate-list");
+
+            // Iterate through the candidate data and create HTML elements to display it
+            candidates.forEach(function (candidate) {
+                var candidateDiv = document.createElement("div");
+                candidateDiv.classList.add("candidate");
+                candidateDiv.innerHTML = `
+                    <h3>${candidate.name}</h3>
+                    <p>Email: ${candidate.email}</p>
+                    <p>Position: ${candidate.position}</p>
+                    <button onclick="hireCandidate('${candidate.name}')">Hire</button>
+                `;
+                candidateListContainer.appendChild(candidateDiv);
+            });
+        }
+
+        // Function to simulate hiring a candidate (replace with actual hiring logic)
+        function hireCandidate(name) {
+            alert("Candidate " + name + " hired!");
+        }
+    </script>
+</body>
+
+</html>
