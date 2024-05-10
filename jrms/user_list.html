@@ -41,8 +41,8 @@ button.update:hover {
     background-color: #165F86;
 }
 
-button.delete {
-    background-color: #e12646;
+button.default {
+    background-color: #91768F;
     color: #fff;
     border: none;
     padding: 8px 12px;
@@ -53,8 +53,8 @@ button.delete {
     margin-right: 10px;
 }
 
-button.delete:hover {
-    background-color: #822734;
+button.default:hover {
+    background-color: #440B3F;
 }
 
 
@@ -105,6 +105,7 @@ button.delete:hover {
                     <th style="width:100px;">User ID</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Status</th>
                     <th>Role</th>
                     <th>Action</th>
                 </tr>
@@ -114,30 +115,33 @@ button.delete:hover {
                     <td>1</td>
                     <td>John Doe</td>
                     <td>john@example.com</td>
+                    <td>Active</td>
                     <td>Company User</td>
                     <td>                    
                         <center><button class="update"  onclick="update('${company.name}')">Update</button>
-                         <button class="delete" onclick="update('${company.name}')">Delete</button>
+                         <button class="default" onclick="update('${company.name}')">Inactive</button>
                      </center> </td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Jane Smith</td>
                     <td>jane@example.com</td>
+                    <td>Active</td>
                     <td>Company Admin</td>
                     <td>                    
                        <center><button class="update"  onclick="update('${company.name}')">Update</button>
-                        <button class="delete" onclick="update('${company.name}')">Delete</button>
+                        <button class="default" onclick="update('${company.name}')">Inactive</button>
                     </center> </td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>Michael Johnson</td>
                     <td>michael@example.com</td>
+                    <td>Active</td>
                     <td>Admin</td>
                     <td>                    
                         <center><button class="update"  onclick="update('${company.name}')">Update</button>
-                         <button class="delete" onclick="update('${company.name}')">Delete</button>
+                         <button class="default" onclick="update('${company.name}')">Inactive</button>
                      </center> </td>
                 </tr>
                 <!-- Add more rows for each user -->
@@ -145,30 +149,33 @@ button.delete:hover {
                     <td>4</td>
                     <td>Emily Brown</td>
                     <td>emily@example.com</td>
+                    <td>Active</td>
                     <td>Company User</td>
                     <td>                    
                         <center><button class="update"  onclick="update('${company.name}')">Update</button>
-                         <button class="delete" onclick="update('${company.name}')">Delete</button>
+                         <button class="default" onclick="update('${company.name}')">Inactive</button>
                      </center> </td>
                 </tr>
                 <tr>
                     <td>5</td>
                     <td>David Wilson</td>
-                    <td>david@example.com</td>
+                    <td>david@example.com</td>\
+                    <td>Active</td>
                     <td>Company Admin</td>
                     <td>                    
                         <center><button class="update"  onclick="update('${company.name}')">Update</button>
-                         <button class="delete" onclick="update('${company.name}')">Delete</button>
+                         <button class="default" onclick="update('${company.name}')">Inactive</button>
                      </center> </td>
                 </tr>
                 <tr>
                     <td>6</td>
                     <td>Emma Thompson</td>
                     <td>emma@example.com</td>
+                    <td>Inactive</td>
                     <td>Admin</td>
                     <td>                    
                         <center><button class="update"  onclick="update('${company.name}')">Update</button>
-                         <button class="delete" onclick="update('${company.name}')">Delete</button>
+                         <button class="default" onclick="update('${company.name}')">Active</button>
                      </center> </td>
                 </tr>
                 <!-- Add more rows for each user -->

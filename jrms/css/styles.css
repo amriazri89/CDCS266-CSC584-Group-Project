@@ -300,3 +300,37 @@ button[type="submit"]:hover {
 .job:hover {
     box-shadow: 0 0 10px rgba(0, 0, 255, 0.3); /* Adjust the alpha value as needed */
 }
+
+
+
+button.update {
+    background-color: #258AC0;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+button.update:hover {
+    background-color: #165F86;
+}
+
+button.delete {
+    background-color: #e12646;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+button.delete:hover {
+    background-color: #822734;
+}
