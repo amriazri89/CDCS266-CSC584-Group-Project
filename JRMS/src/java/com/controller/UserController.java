@@ -72,6 +72,8 @@ public class UserController extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/listofcompany.jsp");
             } else if ("CompanyUser".equals(role)) {
                 response.sendRedirect(request.getContextPath() + "/hire_candidate.jsp");
+            }else if ("CandidateUser".equals(role)) {
+                response.sendRedirect(request.getContextPath() + "/jobs.jsp");
             }
         } else {
             request.setAttribute("errors", "Authentication failed. Invalid email or password.");

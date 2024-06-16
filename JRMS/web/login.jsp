@@ -72,7 +72,7 @@
 
                             <input type="hidden" name="action" value="authentication">
                             <center>
-                                <input type="radio" id="candidate" name="role" value="CandidateUSer" checked>
+                                <input type="radio" id="candidate" name="role" value="CandidateUser" checked>
                                 Candidate &nbsp; &nbsp; &nbsp;
                                 <input type="radio" id="company" name="role" value="CompanyUser">
                                 Company &nbsp; &nbsp; &nbsp;
