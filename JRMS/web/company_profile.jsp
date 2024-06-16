@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+    <%@ taglib prefix="custom" uri="com.tag" %>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +51,7 @@
     </style>
 </head>
 <body>
-    <custom:navBar /><br><br><br><br>
+    <custom:navBar role="company" session="${user != null}"/><br><br><br><br>
     <div class="container">
         <h2>Company Profile</h2>
         <form id="company-profile-form">

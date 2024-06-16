@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<%@ taglib uri="com.tag" prefix="custom" %>
+<%@ page import="com.model.User" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -168,13 +169,13 @@
 </head>
 
 <body>
-    <custom:navBar />
+<custom:navBar role="company" session="${user != null}"/>
     <br> <br> <br> <br> <br> <br>
 
     <div class="container">
 
 
-        <h2>List of Candidates</h2><br>
+        <h2>List of Candidates </h2><br>
         <div id="candidate-list">
             <!-- Candidate information will be dynamically populated here -->
         </div>

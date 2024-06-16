@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="custom" uri="com.tag" %>
 <html lang="en">
 <head>
@@ -19,7 +21,6 @@
             background-color: #f4f4f4;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
         }
         .login-container h2 {
             margin-bottom: 20px;
@@ -53,41 +54,63 @@
         }
     </style>
 </head>
-<body >
+<body>
     <custom:navBar /><br><br>
     <section id="login">
         <div class="container">
             <div class="login-container">
                 <img src="image/job.png" alt="Background Image" style="margin-right:95px;margin-top:-80px;float:right;width:180px;height:120px;">
-<br><br>
-                <center><span style="font-size: 18px;font-family: verdana;">Welcome to <strong>JRMS</strong> login portal</span>
-                </center><br><hr style="border:solid blue 1px;"><form id="login-form" onsubmit="return redirectToRole()">
-                        <center>
-                        <input type="radio" id="candidate" name="role" value="candidate" checked>
-                        Candidate &nbsp; &nbsp; &nbsp;
-                        <input type="radio" id="company" name="role" value="company">
-                        Company &nbsp; &nbsp; &nbsp;
-                        <input type="radio" id="admin" name="role" value="admin">
-                        Admin
-                    </center>
-                    <br>
-                    <div class="form-group">
-                        <label for="login-email">Email</label>
-                        <input type="email" id="login-email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="login-password">Password</label>
-                        <input type="password" id="login-password" name="password">
-                    </div>
-                    
-                    <div class="form-group">
-                        <button type="submit">Login</button>
-                    </div>
-                    <div><i>Don't have account?</i><br>
-                        <a style="float:right;margin-top: -25px;" href="signup.html">register candidate.</a><br>
-                        <a style="float:right;margin-top: -25px;" href="reg_company.jsp">register company.</a>
-                    </div>
-                </form>
+                <br><br>
+                <center>
+                    <span style="font-size: 18px;font-family: verdana;">Welcome to <strong>JRMS</strong> login portal</span>
+                </center>
+                <br>
+                <hr style="border:solid blue 1px;">
+                
+   
+                        <form id="login-form" method="post" action="user">
+
+                            <input type="hidden" name="action" value="authentication">
+                            <center>
+                                <input type="radio" id="candidate" name="role" value="CandidateUSer" checked>
+                                Candidate &nbsp; &nbsp; &nbsp;
+                                <input type="radio" id="company" name="role" value="CompanyUser">
+                                Company &nbsp; &nbsp; &nbsp;
+                                <input type="radio" id="admin" name="role" value="AdminUser">
+                                Admin
+                            </center><br>
+                            <%        if (request.getAttribute("errors") != null) {
+    %>
+        <center style="color:red"> <%= request.getAttribute("errors") %></center>
+    <%
+        }
+    %>
+        
+        <%        if (request.getAttribute("message") != null) {
+    %>
+        <center style="color:red"> <%= request.getAttribute("message") %></center>
+    <%
+        }
+    %>
+                            
+                            <div class="form-group">
+                                <label for="login-email">Email</label>
+                                <input type="email" id="login-email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">Password</label>
+                                <input type="password" id="login-password" name="password">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit">Login</button>
+                            </div>
+                            <div>
+                                <i>Don't have account?</i><br>
+                                <a style="float:right;margin-top: -25px;" href="signup.html">register candidate.</a><br>
+                                <a style="float:right;margin-top: -25px;" href="reg_company.jsp">register company.</a>
+                            </div>
+                        </form>
+                   
             </div>
         </div>
     </section>
@@ -98,7 +121,7 @@
         </div>
     </footer>
 
-    <script>
+<!--    <script>
         function redirectToRole() {
             var role = document.querySelector('input[name="role"]:checked').value;
     
@@ -113,7 +136,7 @@
     
             return false; // Prevent form submission
         }
-    </script>
+    </script>-->
     
 </body>
 </html>

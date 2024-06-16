@@ -53,47 +53,42 @@
     </style>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <img src="image/job.png" alt="Background Image" style="margin-left:-150px;width:100px;height:68px;">
-
-            <h1 style="margin-left:-580px;;">Job Recruitment <span style="color:blue;font-size:12px;">by vintech</span> </h1>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="jobs.html">Jobs</a></li>
-                <li><a href="login.html">Login/Signup</a></li>
-                <li><a href="aboutus.html">About Us</a></li>
-            </ul>
-        </div>
-    </nav>
+    <custom:navBar />
     <br><br><br>
     <div class="registration-container">
         <h2>Registration Form: Company Details</h2>
  
-        <form id="company-registration-form">
+        <form id="company-registration-form" 
+              action="RecruitmentCompanyController" method="post">
+            <input type="hidden"  name="action" value="create" />
             <div class="form-group">
                 <label for="company-name">Company Name</label>
-                <input type="text" id="company-name" name="company-name" required>
+                <input type="text" id="company-name" name="companyName" required>
             </div>
             <div class="form-group">
                 <label for="company-details">Company Details (Short Description)</label>
-                <textarea id="company-details" name="company-details" rows="4" required></textarea>
+                <textarea id="company-details" name="companyDetails" rows="4"></textarea>
             </div>
             <div class="form-group">
                 <label for="company-phone">Company Phone Number</label>
-                <input type="tel" id="company-phone" name="company-phone" required>
+                <input type="tel" id="company-phone" name="companyPhone" required>
             </div>
             <div class="form-group">
                 <label for="company-email">Company Email</label>
-                <input type="email" id="company-email" name="company-email" required>
+                <input type="email" id="company-email" name="companyEmail" required>
             </div>
             <div class="form-group">
                 <label for="company-address">Company Address</label>
-                <input type="text" id="company-address" name="company-address" required>
+                <input type="text" id="company-address" name="companyAddress" required>
+            </div>
+            Person In Charge Details
+            <div class="form-group">
+                <label for="company-password">PIC Email </label>
+                <input type="email" id="company-password" name="userEmail" required>
             </div>
             <div class="form-group">
                 <label for="company-password">Password</label>
-                <input type="password" id="company-password" name="company-password" required>
+                <input type="password" id="company-password" name="userPassword" required>
             </div>
             <div class="form-group">
                 <button type="submit">Register</button>

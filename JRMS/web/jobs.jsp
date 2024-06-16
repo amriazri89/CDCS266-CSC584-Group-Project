@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ taglib prefix="custom" uri="com.tag" %>
 <html lang="en">
 
 <head>

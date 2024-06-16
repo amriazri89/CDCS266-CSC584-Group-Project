@@ -1,6 +1,8 @@
+<%@page import="com.model.CompanyUser"%>
 <!DOCTYPE html>
 <%@ taglib prefix="custom" uri="com.tag" %>
 <html lang="en">
+<%@ page import="com.model.User" %>
 
 <head>
     <meta charset="UTF-8">
@@ -98,7 +100,20 @@
 </head>
 
 <body style="background:#fbf7f5">
-    <custom:navBar /><br>
+    <%
+    String role = ""; // Initialize role variable
+    
+    // Check if user session exists and determine role
+    if (session.getAttribute("user") != null) {
+        Object userObject = session.getAttribute("user");
+         if (userObject instanceof CompanyUser) {
+            role = "company";
+        }
+        
+    }
+%>
+<custom:navBar role="<%= role %>" session="${user != null}"/>
+<br>
 
     <div class="container">
         <br> <br>

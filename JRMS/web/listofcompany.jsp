@@ -82,11 +82,11 @@
 </head>
 
 <body>
-    <custom:navBar />
+     <custom:navBar role="admin" session="${user != null}"/>
     <br> <br> <br> <br> <br>
 
     <div class="container">
-        <h2>List of Companies</h2><br>
+        <h2>List of Companies </h2><br>
         <div id="companies-list">
             <!-- Company information will be dynamically populated here -->
         </div>
@@ -141,7 +141,7 @@
         }
         function createJob(name) {
             // Redirect to create_job.html
-            window.location.href = "create_job.html";
+            window.location.href = "create_job.jsp";
         }
     </script>
 </body>

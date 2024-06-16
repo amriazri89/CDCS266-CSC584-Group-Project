@@ -1,4 +1,5 @@
 <!DOCTYPE jsp>
+<%@ taglib prefix="custom" uri="com.tag" %>
 
 <jsp lang="en">
 <head>

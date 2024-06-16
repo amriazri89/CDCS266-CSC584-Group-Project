@@ -1,4 +1,8 @@
+<%@page import="com.model.CompanyUser"%>
+<%@page import="com.model.AdminUser"%>
 <!DOCTYPE html>
+<%@ page import="com.model.User" %>
+
 <%@ taglib prefix="custom" uri="com.tag" %>
 <html lang="en">
 <head>
@@ -194,12 +198,29 @@ button:hover {
     </style>
 </head>
 <body> 
-    <custom:navBar />
+<%-- Check if user is logged in and determine role --%>
+<%
+    String role = ""; // Initialize role variable
+    
+    // Check if user session exists and determine role
+    if (session.getAttribute("user") != null) {
+        Object userObject = session.getAttribute("user");
+        if (userObject instanceof AdminUser) {
+            role = "admin";
+        } else if (userObject instanceof CompanyUser) {
+            role = "company";
+        }
+    }
+%>
+<custom:navBar role="<%= role %>" session="${user != null}" />
+
+
+
 <br><br><br>
     <!-- Homepage -->
     <section id="home" style="background:#43798C">
         <div class="container1">
-            <h1 style="color:white">Explore Our Job Recruitment System</h1>
+            <h1 style="color:white">Explore Our Job Recruitment System ${sessionScope.user == null} ${role == 'company'}</h1>
             <i style="color:white">Discover opportunities to grow and thrive. Find your next career move with us!</i>
             <!-- Add more content as needed -->
         </div>
@@ -216,7 +237,9 @@ button:hover {
     <!-- Job Listings -->
     <section id="jobs">
         <div class="container">
-            <h2>Latest Offer From Company</h2>
+          <h2>Latest Offer From Company</h2>
+
+</h2>
             <div class="job-listings">
                 <!-- Sample job listing for Intel Corporation -->
                 <div class="job">

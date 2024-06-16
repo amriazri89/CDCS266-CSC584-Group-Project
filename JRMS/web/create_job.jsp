@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="custom" uri="com.tag" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,8 @@
     <!-- Add any additional styles as needed -->
 </head>
 <body style="background-color:whitesmoke">
-    <custom:navBar /><br><br><br><br>
+         <custom:navBar role="admin" session="${user != null}"/>
+<br><br><br><br>
     <a href="listofjobvacancy.jsp" style="font-weight:10px;text-align:center;text-decoration: none;height:30px;margin-left: 20px;font: 1em sans-serif;border-radius: 5px;width:200px;">&nbsp;&nbsp;Back as Company Admin</a>
     <br><div class="container">
         <h2>Create Job Vacancies</h2>
