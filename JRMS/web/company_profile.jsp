@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <%@ taglib prefix="custom" uri="com.tag" %>
+<%@ page import="com.model.User" %>
 
 <head>
     <meta charset="UTF-8">
@@ -46,7 +47,19 @@
         textarea {
             height: 100px;
         }
-
+   #industry-select {
+                color: black; /* Default color for options */
+                background-color: white; /* Background color */
+                padding: 5px;
+                border-radius: 3px;
+                border: 1px solid #ccc;
+                font-size: 16px;
+                width: 100%;
+            }
+            /* Style for option hover */
+            #industry-select option:hover {
+                background-color: lightgray; /* Hover color */
+            }
      
     </style>
 </head>
@@ -54,22 +67,30 @@
     <custom:navBar role="company" session="${user != null}"/><br><br><br><br>
     <div class="container">
         <h2>Company Profile</h2>
-        <form id="company-profile-form">
+        <form id="company-profile-form" action="jobVacancies" method="post">
             <div class="form-group">
                 <label for="company-name">Company Name:</label>
-                <input type="text" id="company-name" name="company-name" placeholder="Your Company Name..." required>
+                <input type="text" id="company-name" name="name" value="${user.recruitmentCompany.name}" placeholder="Your Company Name..." required>
             </div>
             <div class="form-group">
                 <label for="company-description">Company Description:</label>
-                <textarea id="company-description" name="company-description" placeholder="Your company description ..."  required></textarea>
+                <textarea id="company-description" name="description" value="${user.recruitmentCompany.description}" placeholder="Your company description ..."  required></textarea>
+            </div>
+              <div class="form-group">
+                <label for="company-location">Email </label>
+                <input type="text" id="company-location" name="email" value="${user.recruitmentCompany.email}" placeholder="Your Company Email..." required>
             </div>
             <div class="form-group">
-                <label for="company-location">Location:</label>
-                <input type="text" id="company-location" name="company-location" placeholder="Your Company Location..." value="" required>
+                <label for="company-location">Company Phone</label>
+                <input type="text" id="company-location" name="phone" value="${user.recruitmentCompany.phone}" placeholder="Your Company Phone..." required>
+            </div>
+               <div class="form-group">
+                <label for="company-location">Address</label>
+                <input type="text" id="company-location" name="address" value="${user.recruitmentCompany.address}" placeholder="Your Company Location..." required>
             </div>
             <div class="form-group">
-                <label for="company-industry">Industry:</label>
-                <select id="industry-select"    >
+                <label for="industry">Industry:</label>
+                <select id="industry-select"  value="${user.recruitmentCompany.industry}"  >
                     <option value="selected" selected>Any Industry...</option>
                     <option value="Accounting">Accounting</option>
                     <option value="Agriculture, Forestry & Fishing">Agriculture, Forestry & Fishing</option>
@@ -101,38 +122,6 @@
         </div>
     </footer>
 
-    <!-- Add any scripts for handling form submission -->
-    <script>
-        // JavaScript for handling form submission
-        document.getElementById("company-profile-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the form from submitting
-
-            // Extract form data
-            var formData = new FormData(this);
-
-            // Perform AJAX request to submit the form data to the server
-            // Replace the URL and method with the appropriate values for your backend
-            fetch("update_profile.php", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Profile updated successfully, display success message or redirect
-                    alert("Profile updated successfully!");
-                    // Optionally redirect to another page
-                    // window.location.href = "profile.jsp";
-                } else {
-                    // Profile update failed, display error message
-                    alert("Failed to update profile. Please try again.");
-                }
-            })
-            .catch(error => {
-                // Error occurred during the request
-                console.error("Error:", error);
-                alert("An error occurred. Please try again later.");
-            });
-        });
-    </script>
+ 
 </body>
 </html>

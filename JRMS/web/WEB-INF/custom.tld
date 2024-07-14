@@ -16,10 +16,15 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-        <name>session</name>
-        <required>false</required>
-        <rtexprvalue>true</rtexprvalue>
-    </attribute>
+            <name>session</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>userId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
     </tag>
 
 </taglib>

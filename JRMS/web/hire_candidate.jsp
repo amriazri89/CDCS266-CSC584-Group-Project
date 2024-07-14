@@ -29,7 +29,6 @@
             /* Place the overlay behind other content */
         }
 
-
         .container,
         footer {
             position: relative;
@@ -52,7 +51,7 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 255, 0.1);
             border: 1px solid rgb(122, 122, 126);
-
+            margin-bottom: 20px; /* Added margin bottom for spacing */
         }
 
         .candidate:hover {
@@ -77,6 +76,7 @@
             border-radius: 3px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            margin-right: 10px; /* Added margin right for button spacing */
         }
 
         .candidate button:hover {
@@ -88,7 +88,6 @@
             text-decoration: underline;
         }
 
-
         button.delete {
             background-color: #e12646;
             color: #fff;
@@ -98,7 +97,6 @@
             font-size: 18px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            margin-right: 10px;
         }
 
         button.delete:hover {
@@ -161,21 +159,28 @@
             background-color: #244C85;
         }
 
-        input[type="date"]{
-            padding:5px;
+        input[type="date"] {
+            padding: 5px;
             border-radius: 4px;
         }
     </style>
 </head>
 
 <body>
-<custom:navBar role="company" session="${user != null}"/>
-    <br> <br> <br> <br> <br> <br>
+    <custom:navBar userId="${user.id}" role="company" session="${user != null}" />
+    <br><br><br><br><br><br><br>
+
+    <%  String login = request.getParameter("login");
+        if (login != null && login.equals("yes")) {
+    %>
+    <audio id="myAudio" controls autoplay style="display:none">
+        <source src="audio/jrms.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <% } %>
 
     <div class="container">
-
-
-        <h2>List of Candidates </h2><br>
+        <h2>List of Candidates</h2>
         <div id="candidate-list">
             <!-- Candidate information will be dynamically populated here -->
         </div>
@@ -191,6 +196,7 @@
             <button onclick="approveCandidate()" style="float:right;height:35px;">Submit</button>
         </div>
     </div>
+
     <footer>
         <div class="container">
             <p>&copy; 2024 Job Recruitment System. All rights reserved.</p>
@@ -215,9 +221,9 @@
                 var candidateDiv = document.createElement("div");
                 candidateDiv.classList.add("candidate");
                 candidateDiv.innerHTML = `
-                    <h3>${candidate.name}</h3>
-                    <p>Email: ${candidate.email}</p>
-                    <p>Position: ${candidate.position}</p>
+                    <h3>Dummy Data : Candidate name</h3>
+                    <p>Email: candidate@gmail.com</p>
+                    <p>Position: Dummy</p>
                     <button onclick="openModal('${candidate.name}')">Approve</button>
                     <button class="delete" onclick="rejectCandidate('${candidate.name}')">Reject</button>
                 `;

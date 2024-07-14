@@ -19,11 +19,23 @@ public class User {
     private String phone;
     private String fullname;
     private String noIc;
-    private String status;
-
+    private String status = "Active";
+    private String address;
+    
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<JobApplication> jobApplications;
-
+    
+    public String getRole() {
+        if (this instanceof CompanyUser) {
+            return "Company";
+        } else if (this instanceof CandidateUser) {
+            return "Candidate";
+        } else if (this instanceof AdminUser) {
+            return "Admin";
+        } else {
+            return "Unknown";
+        }
+    }
     // Getters and Setters
     public Long getId() {
         return id;
@@ -87,6 +99,12 @@ public class User {
 
     public void setNoIc(String noIc) {
         this.noIc = noIc;
+    }
+    public String getAddress(){
+        return address;
+    }
+    public void setAddress(String address){
+        this.address=address;
     }
 
     public List<JobApplication> getJobApplications() {

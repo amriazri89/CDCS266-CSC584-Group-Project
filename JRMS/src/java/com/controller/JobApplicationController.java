@@ -1,90 +1,109 @@
 package com.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.dao.SessionFact;
+import com.model.JobApplication;
+import com.model.JobVacancies;
+import com.model.User;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-/**
- * Servlet implementation class JobApplicationController
- */
 public class JobApplicationController extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
-    
-    /**
-     * Default constructor. 
-     */
+    private static SessionFactory factory;
+
+    @Override
+    public void init() throws ServletException {
+        // Initialize Hibernate session factory
+        factory = new Configuration().configure().buildSessionFactory();
+    }
+
+    @Override
+    public void destroy() {
+        if (factory != null) {
+            factory.close();
+        }
+    }
+
     public JobApplicationController() {
-        // TODO Auto-generated constructor stub
+        super();
+        if (factory == null) {
+            factory = SessionFact.getSessionFactory();
+        }
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        String action = request.getParameter("action");
+        if ("applyJob".equalsIgnoreCase(action)) {
+            applyJob(request, response);
+
+        }
     }
-    
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String action = request.getParameter("action");
-            
-            if ("create".equalsIgnoreCase(action)) {
-                // Process job application submission
-                String applicantName = request.getParameter("applicantName");
-                String jobTitle = request.getParameter("jobTitle");
-                String resume = request.getParameter("resume"); // Example: Assuming resume upload
-                
-                // Example: Save job application to database
-                // jobApplicationService.createJobApplication(applicantName, jobTitle, resume);
-                
-                // Redirect to success page or display a message
-                response.sendRedirect(request.getContextPath() + "/success.jsp");
-                
-            } else if ("update".equalsIgnoreCase(action)) {
-                // Process job application update (if needed)
-                // Typically, job applications are not updated after submission in most systems.
-                // This can be handled based on specific business requirements.
-                
-                // Redirect to success page or display a message
-                response.sendRedirect(request.getContextPath() + "/success.jsp");
-                
-            } else if ("delete".equalsIgnoreCase(action)) {
-                // Process job application deletion (if needed)
-                // Deleting job applications might not be a common practice in many systems.
-                // This can be handled based on specific business requirements.
-                
-                // Redirect to success page or display a message
-                response.sendRedirect(request.getContextPath() + "/success.jsp");
-                
-            } else {
-                // Default action: display some page
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Job Application Controller</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Welcome to Job Application Controller</h1>");
-                out.println("<p>This servlet handles CRUD operations for job applications.</p>");
-                out.println("</body>");
-                out.println("</html>");
+
+    private void applyJob(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String coverLetter = request.getParameter("coverLetter");
+        String offerStatus = request.getParameter("offerStatus");
+        String offerDetails = request.getParameter("offerDetails");
+ 
+        long jobId = Long.parseLong(request.getParameter("jobId"));
+        long userId = Long.parseLong(request.getParameter("userId"));
+        System.out.println("userId : " + userId);
+        
+
+        Session session = null;
+        Transaction transaction = null;
+
+        try {
+            session = factory.openSession();
+            transaction = session.beginTransaction();
+
+            // Retrieve the job vacancy associated with the given jobId
+            JobVacancies jobVacancy = (JobVacancies) session.get(JobVacancies.class, jobId);
+            if (jobVacancy == null) {
+                throw new ServletException("Job vacancy not found for id: " + jobId);
+            }
+
+            // Retrieve the user associated with the given userId
+            User user = (User) session.get(User.class, userId);
+            if (user == null) {
+                System.out.println("User not found for id: " + userId);
+                throw new ServletException("User not found for id: " + userId);
+            }
+            System.out.println("user : " + user);
+
+            // Create a new job application instance
+            JobApplication jobApplication = new JobApplication();
+            jobApplication.setCoverLetter(coverLetter);
+            jobApplication.setJobVacancies(jobVacancy);
+            jobApplication.setUser(user);
+
+            // Save the job application and update the job vacancy
+            session.save(jobApplication);
+
+            transaction.commit();
+            response.sendRedirect(request.getContextPath() + "/jobVacancies?action=alljobVacancies&msg=Sucessfully Applied Job");
+        } catch (NumberFormatException | HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            throw new ServletException("Error applying for job vacancy", e);
+        } finally {
+            if (session != null) {
+                session.close();
             }
         }
     }
 
-    @Override
-    public String getServletInfo() {
-        return "JobApplicationController Servlet";
-    }
 }

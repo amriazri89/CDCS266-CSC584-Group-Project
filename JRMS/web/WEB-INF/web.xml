@@ -24,6 +24,10 @@
         <servlet-name>Logout</servlet-name>
         <servlet-class>com.controller.Logout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterCandidateController</servlet-name>
+        <servlet-class>com.controller.RegisterCandidateController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
@@ -34,19 +38,23 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RecruitmentCompanyController</servlet-name>
-        <url-pattern>/RecruitmentCompanyController</url-pattern>
+        <url-pattern>/recruitmentCompany</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>JobApplicationController</servlet-name>
-        <url-pattern>/JobApplicationController</url-pattern>
+        <url-pattern>/JobApplication</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>JobVacanciesController</servlet-name>
-        <url-pattern>/JobVacanciesController</url-pattern>
+        <url-pattern>/jobVacancies</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterCandidateController</servlet-name>
+        <url-pattern>/registerCandidate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

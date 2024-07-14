@@ -1,10 +1,30 @@
 package com.model;
 
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "recruitment_company")
 public class RecruitmentCompany {
+    public static final String[] INDUSTRY = {
+        "Accounting",
+        "Agriculture, Forestry & Fishing",
+        "Automotive",
+        "Construction",
+        "Consulting",
+        "Education",
+        "Entertainment",
+        "Finance",
+        "Food & Beverage",
+        "Healthcare",
+        "Information Technology",
+        "Manufacturing",
+        "Marketing & Advertising",
+        "Retail",
+        "Telecommunications"
+    };
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,10 +33,30 @@ public class RecruitmentCompany {
     private String description;
     private String phone;
     private String address;
+    private String industry;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(mappedBy = "recruitmentCompany", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<JobVacancies> jobVacancies;
+
+    public List<JobVacancies> getJobVacancies() {
+        return jobVacancies;
+    }
+
+    public void setJobVacancies(List<JobVacancies> jobVacancies) {
+        this.jobVacancies = jobVacancies;
+    }
+
+    public String getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
 
     // Getters and Setters
     public Long getId() {
@@ -67,8 +107,8 @@ public class RecruitmentCompany {
         this.user = user;
     }
 
-    public User getEmail() {
-        return user;
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {

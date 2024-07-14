@@ -11,9 +11,19 @@ package com.model;
  */
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("CompanyUser")
 public class CompanyUser extends User {
-  
+    @OneToOne(mappedBy = "user")
+    private RecruitmentCompany recruitmentCompany;
+
+    public RecruitmentCompany getRecruitmentCompany() {
+        return recruitmentCompany;
+    }
+
+    public void setRecruitmentCompany(RecruitmentCompany recruitmentCompany) {
+        this.recruitmentCompany = recruitmentCompany;
+    }
 }

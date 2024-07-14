@@ -1,6 +1,9 @@
 <!DOCTYPE jsp>
 <%@ taglib prefix="custom" uri="com.tag" %>
-
+<%@page import="com.model.CompanyUser"%>
+<%@page import="com.model.AdminUser"%>
+<!DOCTYPE html>
+<%@ page import="com.model.User" %>
 <jsp lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +48,20 @@
     </style>
 </head>
 <body>
-    <custom:navBar />
+    <%
+    String role = ""; // Initialize role variable
+    
+    // Check if user session exists and determine role
+    if (session.getAttribute("user") != null) {
+        Object userObject = session.getAttribute("user");
+        if (userObject instanceof AdminUser) {
+            role = "admin";
+        } else if (userObject instanceof CompanyUser) {
+            role = "company";
+        }
+    }
+%>
+<custom:navBar role="<%= role %>" session="${user != null}" />
 <br><br><br><br>
     <section id="about">
         <div class="container">
@@ -59,7 +75,7 @@
             </i></div>
         </div>
     </section>
-
+<br><br><br>
     <footer>
         <div class="container">
             <p>&copy; 2024 Job Recruitment System. All rights reserved.</p>

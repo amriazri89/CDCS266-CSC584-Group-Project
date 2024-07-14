@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@ taglib prefix="custom" uri="com.tag" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,14 +6,13 @@
     <title>Candidate Sign Up</title>
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* Additional styles for login and sign-up forms */
         body {
-            background-image: url('image/pexels-njeromin-11542516.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+            background-image: url('image/pexels-njeromin-11542516.jpg');
             background-size: cover;
         }
         .signup-container {
             width: 550px;
-            margin: 50px auto; /* Center the form vertically */
+            margin: 50px auto;
             padding: 80px;
             background-color: #f4f4f4;
             border-radius: 5px;
@@ -35,7 +33,7 @@
         .form-group textarea {
             width: 100%;
             padding: 8px;
-            border-radius: 10px; /* Rounded corners */
+            border-radius: 10px;
             border: 1px solid #ccc;
         }
         .form-group button {
@@ -57,7 +55,6 @@
     <nav>
         <div class="container">
             <img src="image/job.png" alt="Background Image" style="margin-left:-150px;width:100px;height:68px;">
-
             <h1 style="margin-left:-580px;;">Job Recruitment <span style="color:blue;font-size:12px;">by vintech</span> </h1>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -67,12 +64,13 @@
             </ul>
         </div>
     </nav>
-<br><br>
+    <br><br>
     <section id="signup" style="width:100%;">
-        <div class="container" >
+        <div class="container">
             <div class="signup-container" style="width:800px;">
                 <h2 style="color:#244C85;font-family: Verdana;">Candidate Sign Up</h2>
-                <form id="signup-form" action="submit_candidate_signup.php" method="post" enctype="multipart/form-data">
+                <form id="signup-form" action="user" method="post" >
+                    <input type="hidden" name="action" value="registerCandidate">
                     <div class="form-group">
                         <label for="signup-fullname">Full Name</label>
                         <input type="text" id="signup-fullname" name="fullname" required>
@@ -97,14 +95,14 @@
                         <label for="signup-ic">IC Number</label>
                         <input type="text" id="signup-ic" name="ic_number" required>
                     </div>
-                    <div class="form-group">
+<!--                    <div class="form-group">
                         <label for="signup-profile-pic">Profile Picture</label>
-                        <input type="file" id="signup-profile-pic" name="profile_picture" accept="image/*" required>
+                        <input type="file" id="signup-profile-pic" name="profile_picture" accept="image/*">
                     </div>
                     <div class="form-group">
                         <label for="signup-resume">Resume</label>
-                        <input type="file" id="signup-resume" name="resume" accept=".pdf,.doc,.docx" required>
-                    </div>
+                        <input type="file" id="signup-resume" name="resume" accept=".pdf,.doc,.docx">
+                    </div>-->
                     <div class="form-group">
                         <button type="submit">Sign Up</button>
                     </div>
@@ -112,7 +110,6 @@
             </div>
         </div>
     </section>
-
     <footer>
         <div class="container">
             <p>&copy; 2024 Job Recruitment System. All rights reserved.</p>

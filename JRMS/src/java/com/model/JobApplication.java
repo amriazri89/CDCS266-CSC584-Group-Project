@@ -9,7 +9,7 @@ public class JobApplication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String coverLetter;
     private String number;
     private String offerStatus;
     private String offerDetails;
@@ -32,12 +32,12 @@ public class JobApplication {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCoverLetter() {
+        return coverLetter;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCoverLetter(String coverLetter) {
+        this.coverLetter = coverLetter;
     }
 
     public String getNumber() {

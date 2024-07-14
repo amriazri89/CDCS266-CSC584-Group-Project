@@ -6,6 +6,7 @@
 package com.controller;
 
 import com.dao.SessionFact;
+import com.model.AdminUser;
 import com.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,9 +31,10 @@ public class Test extends HttpServlet {
         try {
             tx = session.beginTransaction();
 
-            User user = new User();
-            user.setUsername("testuser");
-            user.setPassword("password");
+            User user = new AdminUser();
+            user.setUsername("Amri Azri");
+            user.setUsername("emry@gmail.com");
+            user.setPassword("123");
             session.save(user);
 
             tx.commit();

@@ -68,9 +68,8 @@
                 <hr style="border:solid blue 1px;">
                 
    
-                        <form id="login-form" method="post" action="user">
-
-                            <input type="hidden" name="action" value="authentication">
+                        <form id="login-form" action="user" method="post">
+                            <input type="hidden" name="action" value="authenticate">
                             <center>
                                 <input type="radio" id="candidate" name="role" value="CandidateUser" checked>
                                 Candidate &nbsp; &nbsp; &nbsp;
@@ -92,6 +91,13 @@
     <%
         }
     %>
+        
+         <%        if (request.getParameter("msg") != null) {
+    %>
+        <center style="color:red"> <%= request.getParameter("msg") %></center>
+    <%
+        }
+    %>
                             
                             <div class="form-group">
                                 <label for="login-email">Email</label>
@@ -106,7 +112,7 @@
                             </div>
                             <div>
                                 <i>Don't have account?</i><br>
-                                <a style="float:right;margin-top: -25px;" href="signup.html">register candidate.</a><br>
+                                <a style="float:right;margin-top: -25px;" href="signup.jsp">register candidate.</a><br>
                                 <a style="float:right;margin-top: -25px;" href="reg_company.jsp">register company.</a>
                             </div>
                         </form>

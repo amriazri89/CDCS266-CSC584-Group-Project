@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ page import="com.model.User" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -40,7 +41,7 @@
             box-sizing: border-box;
         }
         textarea{
-            height:180px;
+            height:100px;
         }
         .form-group textarea {
             resize: vertical; /* Allow vertical resizing */
@@ -65,24 +66,29 @@
     <br><br><br>
     <section id="apply-job">
         <div class="container">
-            <form class="application-form" action="submit_application.php" method="post">
+            <form class="application-form" action="JobApplication" method="post">
+                <input type="hidden" name="action" value="applyJob" />
+                <input type="hidden" name="jobId" value="<%=request.getParameter("jobId")%>" />
+                <input type="hidden" name="userId" value="${user.id}" />
                 <h2>Apply for a Job</h2>
-               
-                <div class="form-group">
+                <b> Candidate Name :</b> ${user.fullname}<br><br>
+               <b> Email :</b> ${user.email}<br><br>
+               <b> NoIc :</b> ${user.noIc}<br><br>
+<!--                <div class="form-group">
                     <label for="resume">Resume</label>
                     <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
-                </div>
+                </div>-->
                 <div class="form-group">
                     <label for="coverletter">Cover Letter</label>
                     <textarea id="coverletter" name="coverletter" required></textarea>
                 </div>
-                <div class="form-group">
+<br>                <div class="form-group">
                     <button type="submit">Submit Application</button>
                 </div>
             </form>
         </div>
     </section>
-
+<br>
     <footer>
         <div class="container">
             <p>&copy; 2024 Job Recruitment System. All rights reserved.</p>

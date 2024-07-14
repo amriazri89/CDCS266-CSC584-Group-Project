@@ -20,7 +20,14 @@
     <center><h1>Create User</h1>
         <form action="user" method="post" >
             <input type="hidden" name="action" value="createUser">
-            Email :
+                        Full Name :
+          <input type="text" name="name" style="height:60px;width:300px"/><br><br>
+          NRIC  :
+          <input type="text" name="noIc" style="height:60px;width:300px"/><br><br>
+            Phone :
+          <input type="text" name="phone" style="height:60px;width:300px"/><br><br>
+
+Email :
             <input type="text" name="email" style="height:60px;width:300px"/><br><br>
             Password :
             <input type="password" style="height:60px;width:300px" name="password" /><br><br>
@@ -30,6 +37,6 @@
                 <option value="Candidate">Candidate</option>
             </select>
             <br><br>
-            <button style="height:45px;" type="submit">Create User</button>
+            <button style="height:45px;" type="submit">Create User</button><br><br><br>
         </form></center> </body>
 </html>

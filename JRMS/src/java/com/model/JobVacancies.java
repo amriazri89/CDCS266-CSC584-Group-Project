@@ -12,14 +12,24 @@ public class JobVacancies {
     private String title;
     private String description;
     private String salary;
-    private String status;
+    private String status = "Open";
+    private String jobType;
 
+    public String getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
+    }
+    
     @OneToMany(mappedBy = "jobVacancies", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<JobApplication> jobApplications;
 
     @ManyToOne
     @JoinColumn(name = "recruitment_company_id")
     private RecruitmentCompany recruitmentCompany;
+    
 
     // Getters and Setters
     public Long getId() {
@@ -77,4 +87,7 @@ public class JobVacancies {
     public void setRecruitmentCompany(RecruitmentCompany recruitmentCompany) {
         this.recruitmentCompany = recruitmentCompany;
     }
+    
+    
+    
 }

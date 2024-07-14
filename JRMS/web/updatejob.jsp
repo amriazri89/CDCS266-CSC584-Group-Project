@@ -9,7 +9,7 @@
     <!-- Add any additional styles as needed -->
 </head>
 <body>
-    <custom:navBar /><br>
+    <custom:navBar/><br>
     <div class="container">
         <h2>Update Job Vacancies</h2>
         <form id="update-job-form">
